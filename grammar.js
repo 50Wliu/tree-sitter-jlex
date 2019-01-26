@@ -88,7 +88,6 @@ module.exports = grammar({
     java_code: $ => 'hello', // TODO
 
     comment: $ => token(choice(
-			/#.*/, // pound comment
 			/\/\/.*/, // slash comment
 			// http://stackoverflow.com/questions/13014947/regex-to-match-a-c-style-multiline-comment/36328890#36328890
 			seq(
