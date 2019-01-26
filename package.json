@@ -1,0 +1,31 @@
+{
+  "name": "tree-sitter-jlex",
+  "version": "0.0.1",
+  "description": "tree-sitter parser for JLex",
+  "main": "index.js",
+  "scripts": {
+    "build": "tree-sitter generate && node-gyp build",
+    "test": "tree-sitter test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/50Wliu/tree-sitter-jlex.git"
+  },
+  "keywords": [
+    "tree-sitter",
+    "parser",
+    "jlex"
+  ],
+  "author": "Winston Liu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/50Wliu/tree-sitter-jlex/issues"
+  },
+  "homepage": "https://github.com/50Wliu/tree-sitter-jlex#readme",
+  "dependencies": {
+    "nan": "^2.12.1"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.13.16"
+  }
+}
