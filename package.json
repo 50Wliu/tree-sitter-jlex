@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-jlex",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "tree-sitter parser for JLex",
   "main": "index.js",
   "scripts": {
