@@ -46,7 +46,7 @@ module.exports = grammar({
 
     // TODO: Any way to make sure that the two idents match?
     code: $ => seq(
-      /%(\w)+?{/,
+      /%(\w)+?\{/,
       $.java_code,
       /%(\w)+?}/,
     ),
@@ -188,8 +188,9 @@ module.exports = grammar({
       '}'
     ),
 
+    // This should probably be /^%%/ but tree-sitter doesn't support assertions yet
     section_separator: $ => seq(
-      /^%%/,
+      /%%/,
       optional($.comment),
     ),
 
