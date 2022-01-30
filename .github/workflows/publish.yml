@@ -1,0 +1,48 @@
+name: Publish new version
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version to release
+        required: true
+        default: patch
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    steps:
+    - name: Disable CRLF conversion
+      run: git config --global core.autocrlf false
+
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14
+        registry-url: https://registry.npmjs.org
+        cache: npm
+
+    - name: npm ci
+      run: npm ci
+
+    - name: npm run build
+      run: npm run build
+
+    - name: Set git identity
+      run: |
+        $user = Invoke-RestMethod -Method Get -Uri https://api.github.com/users/${{ github.actor }}
+        git config user.name $user.name
+        git config user.email ($user.email ?? "$($user.id)+${{ github.actor }}@users.noreply.github.com")
+
+    - name: npm version ${{ github.event.inputs.version }}
+      run: npm version ${{ github.event.inputs.version }}
+
+    - name: Push new version to GitHub
+      run: |
+        git push
+        git push --tags
+
+    - name: npm publish
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
