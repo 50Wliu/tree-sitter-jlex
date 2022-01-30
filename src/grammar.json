@@ -69,7 +69,7 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "%(\\w)+?{"
+          "value": "%(\\w)+?\\{"
         },
         {
           "type": "SYMBOL",
@@ -648,7 +648,7 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "^%%"
+          "value": "%%"
         },
         {
           "type": "CHOICE",
@@ -705,7 +705,7 @@
               },
               {
                 "type": "PATTERN",
-                "value": "[^*]*\\*+([^\\/*][^*]*\\*+)*"
+                "value": "[^*]*\\*+([^/*][^*]*\\*+)*"
               },
               {
                 "type": "STRING",
@@ -724,13 +724,16 @@
     },
     {
       "type": "PATTERN",
-      "value": "[\\s﻿⁠​ ]"
+      "value": "[\\s\\uFEFF\\u2060\\u200B\\u00A0]"
     }
   ],
   "conflicts": [],
+  "precedences": [],
   "externals": [],
   "inline": [
     "_character_escape",
     "_class_atom"
-  ]
+  ],
+  "supertypes": []
 }
+
